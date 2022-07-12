@@ -1,3 +1,10 @@
+<?php 
+$ofertas = "SELECT * FROM contenidos";
+
+?>
+
+
+
 <section class="items-tab section">
         <div class="container">
             
@@ -7,30 +14,40 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-latest" role="tabpanel" aria-labelledby="nav-latest-tab">
                             <div class="row">
+
+
+                            <?php
+                    //ejecucion y consulta
+                    $resultado = mysqli_query($conexion, $ofertas);
+                    while ($row = mysqli_fetch_assoc($resultado)) { ?>
+
+
                                 <div class="col-lg-3 col-md-4 col-12">
 
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="assets/images/items-tab/item-1.jpg" alt="#"></a>
-                                            <i class=" cross-badge lni lni-bolt"></i>
-                                            <span class="flat-badge sale">Sale</span>
+                                            <a href="item-details.html"><img src="<?php echo $row["fts_1"]; ?>" alt="#"></a>
+                                            
+                                            <span class="flat-badge sale">Hot</span>
                                         </div>
                                         <div class="content">
-                                            <a href="javascript:void(0)" class="tag">Mobile</a>
+                                           
                                             <h3 class="title">
-                                                <a href="item-details.html">Apple Iphone X</a>
+                                                <a href="item-details.html"><?php echo $row["nombre"]; ?></a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
-                                                    </i>Boston</a></p>
-                                            <ul class="info">
-                                                <li class="price">$890.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            
+                                            
                                     </div>
 
                                 </div>
+
+                                <?php  } ?>
+
+
+
+                            
+
+
                                                                
                             </div>
                         </div>
